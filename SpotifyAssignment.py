@@ -119,7 +119,9 @@ def model(features, labels, learning_rate, iterations):
     # Looping over the following calulations {iteration} times
     for iteration in range(iterations):
         total_cost = 0 # Reset total cost every loop
-
+        shuffled = np.random.permutation(rows) # Shuffling the set
+        features=features[shuffled] # Applying the shuffle to the features
+        labels=labels[shuffled] # Applying the shuffle to the labels
         # Forward and backward propagation for all samples
         for sample in range(rows):  # Loop over each sample
 
@@ -155,7 +157,7 @@ def model(features, labels, learning_rate, iterations):
     return w, b, cost_list
 
 # Setting parameters
-iterations = 10
+iterations = 15
 learning_rate = 0.001
 
 # Train the model
